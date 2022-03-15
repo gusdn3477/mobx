@@ -1,7 +1,11 @@
-import { action, observable } from 'mobx';
+import { action, observable, makeObservable } from 'mobx';
 
 class CounterStore {
 
+    // mobX 6부터 추가된 부분.
+    constructor(){
+        makeObservable(this);
+    }
     @observable
     _count = 5;
 
