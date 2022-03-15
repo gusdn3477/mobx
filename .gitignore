@@ -2,10 +2,8 @@
 
 # dependencies
 /node_modules
-/source-template/1.props-template/node_modules/
-/source-template/2.state-template/node_modules/
-/source-template/3.lifecycle-exam/node_modules/
-/source-template/4.counter-mobx/node_modules/
+**/node_modules
+**/.eslintcache
 /.pnp
 .pnp.js
 
