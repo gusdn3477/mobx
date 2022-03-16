@@ -2,10 +2,13 @@ import React, { PureComponent } from 'react';
 
 import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from '@material-ui/core';
 
+import { observer } from 'mobx-react';
+
+@observer
 class TodoListView extends PureComponent {
   render(){
 
-    const sample = [{id: 1, title:'title1', date:'date1'}, {id: 2, title:'title2', date:'date2'}]
+    const { todos } = this.props;
 
     return (
       <TableContainer component={Paper} >
@@ -17,12 +20,21 @@ class TodoListView extends PureComponent {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sample.map( (todo ) => (
+            {
+              // 기본적으로 @observer가 붙은 배열은 @observer 형태의 객체가 된다. (순수 배열이 아님)
+              // 그래서 Mobx6가 아닌 경우 이 부분에서 데이터가 출력되지 않는다.
+              Array.isArray(todos) && todos.length ? 
+            todos.map( (todo ) => (
               <TableRow key={todo.id} >
                 <TableCell>{todo.title}</TableCell>
                 <TableCell>{todo.date}</TableCell>
               </TableRow>
-            ))}
+            ))
+            :
+            <TableRow>
+              <TableCell>Empty</TableCell>
+            </TableRow>
+            }
             
           </TableBody>
         </Table>
