@@ -37,6 +37,32 @@ class TodoStore {
     @action
     addTodo(todo){
         this._todos.push(todo);
+        // 추가되면 입력 창이 clear 되도록 임의적으로 추가함
+        this._todo = {};
+    }
+
+    @action
+    selectedTodo(todo){
+        this._todo = todo;
+    }
+
+    @action
+    updateTodo(){
+        let foundTodo = this._todos.find( todo => todo.id === this._todo.id);
+        foundTodo.title = this._todo.title;
+        foundTodo.date = this._todo.date;
+        
+        this._todo = {};
+    }
+
+    @action
+    removeTodo(){
+        let index = this._todos.findIndex( todo => todo.id === this._todo.id);
+        if(index > -1){
+            this._todos.splice(index, 1);
+        }
+
+        this._todo = {};
     }
 }
 

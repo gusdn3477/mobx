@@ -10,7 +10,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 class TodoEditFormView extends PureComponent {
   render(){
 
-    const { todo, onSetTodoProps, onAddTodo } = this.props;
+    const { todo, onSetTodoProps, onAddTodo, onUpdateTodo, onRemoveTodo } = this.props;
 
     return(
       <form noValidate>
@@ -43,8 +43,10 @@ class TodoEditFormView extends PureComponent {
         <Grid item >
          <Button variant='contained' color='primary' startIcon={<SaveIcon />}
          onClick={onAddTodo}>Add</Button>&nbsp;&nbsp;
-         <Button variant='contained' color='default' startIcon={<UpdateIcon />}>Update</Button>&nbsp;&nbsp;
-         <Button variant='contained' color='secondary' startIcon={<DeleteIcon />}>Delete</Button>&nbsp;&nbsp;
+         <Button variant='contained' color='default' startIcon={<UpdateIcon />}
+         onClick={onUpdateTodo}>Update</Button>&nbsp;&nbsp;
+         <Button variant='contained' color='secondary' startIcon={<DeleteIcon />}
+         onClick={onRemoveTodo}>Delete</Button>&nbsp;&nbsp;
           
         </Grid>
       </form>

@@ -4,11 +4,13 @@ import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Paper
 
 import { observer } from 'mobx-react';
 
+import moment from 'moment';
+
 @observer
 class TodoListView extends PureComponent {
   render(){
 
-    const { todos } = this.props;
+    const { todos, onSelectedTodo } = this.props;
 
     return (
       <TableContainer component={Paper} >
@@ -25,9 +27,9 @@ class TodoListView extends PureComponent {
               // 그래서 Mobx6가 아닌 경우 이 부분에서 데이터가 출력되지 않는다.
               Array.isArray(todos) && todos.length ? 
             todos.map( (todo ) => (
-              <TableRow key={todo.id} >
+              <TableRow key={todo.id} hover onClick={()=>onSelectedTodo(todo)}>
                 <TableCell>{todo.title}</TableCell>
-                <TableCell>{todo.date}</TableCell>
+                <TableCell>{moment(todo.date).format('YYYY-MM-DD HH:mm')}</TableCell>
               </TableRow>
             ))
             :
