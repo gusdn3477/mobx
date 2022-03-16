@@ -12,8 +12,15 @@ class TodoStore {
     @observable
     _todos = [];
 
+    @observable
+    _searchText = '';
+
     get todo(){
         return this._todo;
+    }
+
+    get searchText(){
+        return this._searchText;
     }
 
     // observable 데이터가 변경되지 않으면 최종 캐싱 데이터를 반환해준다.
@@ -32,6 +39,11 @@ class TodoStore {
             ...this.todo,
             [name] : value
         }
+    }
+
+    @action
+    setSearchText(searchText){
+        this._searchText = searchText;
     }
 
     @action

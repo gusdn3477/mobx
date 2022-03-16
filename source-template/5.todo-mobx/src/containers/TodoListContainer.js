@@ -16,7 +16,9 @@ class TodoListContainer extends Component {
   render(){
 
     // get todos의 결과값을 받게 됨
-    const { todos } = this.props.todoStore;
+    let { todos, searchText } = this.props.todoStore;
+
+    todos = todos.filter( todo => todo.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1)
     
     return (
       <TodoListView 
