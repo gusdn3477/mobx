@@ -2,5 +2,14 @@ import { observable, action, computed} from 'mobx';
 
 class TodoStore {
 
-    _todo = {} // id, title, date
+    @observable
+    _todo = {
+        title : "test",
+    } // id, title, date
+
+    get todo(){
+        return this._todo;
+    }
 }
+
+export default new TodoStore();

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import TodoEditFormView from '../views/TodoEdotFormView';
 
+import { inject, observer } from 'mobx-react';
 
+@inject('todoStore')
+@observer
 class TodoEditFormContainer extends Component {
   render(){
+
+    const { todoStore } = this.props;
     return(
-      <TodoEditFormView />
+
+      <TodoEditFormView 
+        todo = {todoStore.todo}/>
     )
   }
 }

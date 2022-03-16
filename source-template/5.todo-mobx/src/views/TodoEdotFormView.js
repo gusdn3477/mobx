@@ -10,6 +10,8 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 class TodoEditFormView extends PureComponent {
   render(){
 
+    const { todo } = this.props;
+
     const selectedDate = new Date();
 
     return(
@@ -20,7 +22,8 @@ class TodoEditFormView extends PureComponent {
               margin="normal"
               id="outlined-basic" 
               label="Title" 
-              variant="standard" />
+              variant="standard"
+              value={ todo.title } />
           </Grid>
           <Grid item xs={3}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
